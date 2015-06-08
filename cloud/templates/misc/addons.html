@@ -1,0 +1,48 @@
+{% load render_table from django_tables2 %}
+{% block content %}
+<div id="addon-list">
+    <div class="row vertical-space">
+        <div class="col-sm-12 col-xs-12">
+            <div class="col-sm-5 col-xs-5 bak-2-col">
+                <div id="addon_content">
+                    <b>What is an Add-ons?</b>
+                    <p>Thunder add-ons allow custom capabilities that may not be
+                        included with Thunder by default.</p>
+                    <br> <b>Are there any limitations?</b>
+                    <p>Thunder supports storage add-ons which can only be only be consumed
+                        by clouds created after the add-on was uploaded.</p>
+                    <br> <b>How do I use an active plugin?</b>
+                    <p>Thunder add-ons are available immediately following upload 
+                        and consumable by all deployments.</p>
+                    <br>
+                </div>
+            </div>
+            <div class="col-sm-7 col-xs-7" id="addon_upload">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <b>Upload New Add-on</b>
+                        <p>Plugin should be in .xml format.</p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-9">
+                        <input type="file" id="addon_file" name="addon_file">
+                    </div>
+                    <div class="col-sm-3 col-xs-3">
+                        <button name="upload-addon" id="upload-addon"
+                            class="btn btn-info active" type="button" disabled>UPLOAD</button>
+                    </div>
+                </div>
+                <div class="row message-padding scroll-bar">
+                    {% for addon in addons %}
+                        <div class=" col-sm-12" id="addOnList">
+                            <div class="patch-releases-left col-sm-11"><b>{{addon.addon_name}}</b> : {{addon.description}}</div>
+                            <div class="col-sm-1 patch-releases-btn">x</div>
+                        </div>
+                    {% endfor %} 
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,107 @@
+{
+	"chef_type": "environment",
+	"default_attributes": 
+	{
+		
+	},
+
+	"name": "my_test_cloud",
+	"override_attributes": 
+	{
+		"openstack": 
+		{
+			"block-storage": 
+			{
+				"volume": 
+				{
+					"block_devices": "/dev/sdb1",
+					"driver": "cinder.volume.drivers.lvm.LVMISCSIDriver"
+				}
+			},
+
+			"compute": 
+			{
+				"network": 
+				{
+					"service_type": "neutron"
+				}
+			},
+
+			"network": 
+			{
+				"l3": 
+				{
+					"external_network_bridge_interface": "eth1"
+				},
+
+				"openvswitch": 
+				{
+					"tenant_network_type": "gre",
+					"enable_tunneling": "True",
+					"tunnel_type": "gre"
+				},
+
+				"metadata": 
+				{
+					"nova_metadata_ip": "controller"
+				}
+			},
+
+			"image": 
+			{
+				"api": 
+				{
+					"default_store": "file"
+				}
+			},
+
+			"mq": 
+			{
+				"service_type": "rabbitmq"
+			},
+
+			"dashboard": 
+			{
+				"server_hostname": "nil",
+				"use_ssl": "false"
+			},
+
+			"object-storage": 
+			{
+				"git_builder_ip": "controller",
+				"network": 
+				{
+					"proxy-cidr": "192.168.122.0/24",
+					"object-cidr": "192.168.122.0/24"
+				}
+			},
+
+			"endpoints": 
+			{
+				"db": 
+				{
+					"host": ["loadbalancer", "ddd"]
+				},
+
+				"host": "controller1",
+				"mq": 
+				{
+					"host": "controller"
+				}
+			}
+		},
+
+		"mysql": 
+		{
+			"server_root_password": "root1"
+		}
+	},
+
+	"cookbook_versions": 
+	{
+		
+	},
+
+	"json_class": "Chef::Environment",
+	"description": "My test CLoud"
+}

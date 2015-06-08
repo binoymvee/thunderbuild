@@ -1,0 +1,1 @@
+{"chef_type": "environment", "default_attributes": {}, "name": "tan_cloud", "override_attributes": {"thunder": {"attach_nic": "eth3", "attach_ip": "192.168.101.74", "netmask": "255.255.255.0"}}, "cookbook_versions": {}, "json_class": "Chef::Environment", "description": "Tan cloud"}

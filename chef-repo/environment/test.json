@@ -1,0 +1,136 @@
+{
+	"interfaces": 
+	{
+		"eth0": 
+		{
+			"type": "eth",
+			"number": "0",
+			"mtu": "1500",
+			"flags": 
+			[
+				"BROADCAST",
+				"MULTICAST",
+				"UP",
+				"LOWER_UP"
+			],
+
+			"encapsulation": "Ethernet",
+			"addresses": 
+			{
+				"52:54:00:14:0B:E2": 
+				{
+					"family": "lladdr"
+				},
+
+				"192.168.122.11": 
+				{
+					"family": "inet",
+					"prefixlen": "24",
+					"netmask": "255.255.255.0",
+					"broadcast": "192.168.122.255",
+					"scope": "Global"
+				},
+
+				"fe80::5054:ff:fe14:be2": 
+				{
+					"family": "inet6",
+					"prefixlen": "64",
+					"scope": "Link"
+				}
+			},
+
+			"state": "up",
+			"arp": 
+			{
+				"192.168.122.101": "52:54:00:31:9c:58",
+				"192.168.122.1": "52:54:00:2f:b2:bf"
+			},
+
+			"routes": 
+			[
+				{
+					"destination": "default",
+					"family": "inet",
+					"via": "192.168.122.1",
+					"metric": "100"
+				},
+
+				{
+					"destination": "192.168.122.0/24",
+					"family": "inet",
+					"scope": "link",
+					"proto": "kernel",
+					"src": "192.168.122.11"
+				},
+
+				{
+					"destination": "fe80::/64",
+					"family": "inet6",
+					"metric": "256",
+					"proto": "kernel"
+				}
+			]
+		},
+
+		"eth1": 
+		{
+			"type": "eth",
+			"number": "1",
+			"mtu": "1500",
+			"flags": 
+			[
+				"BROADCAST",
+				"MULTICAST",
+				"UP",
+				"LOWER_UP"
+			],
+
+			"encapsulation": "Ethernet",
+			"addresses": 
+			{
+				"52:54:00:43:AF:7A": 
+				{
+					"family": "lladdr"
+				},
+
+				"192.168.100.111": 
+				{
+					"family": "inet",
+					"prefixlen": "24",
+					"netmask": "255.255.255.0",
+					"broadcast": "192.168.100.255",
+					"scope": "Global"
+				},
+
+				"fe80::5054:ff:fe43:af7a": 
+				{
+					"family": "inet6",
+					"prefixlen": "64",
+					"scope": "Link"
+				}
+			},
+
+			"state": "up",
+			"routes": 
+			[
+				{
+					"destination": "192.168.100.0/24",
+					"family": "inet",
+					"scope": "link",
+					"proto": "kernel",
+					"src": "192.168.100.111"
+				},
+
+				{
+					"destination": "fe80::/64",
+					"family": "inet6",
+					"metric": "256",
+					"proto": "kernel"
+				}
+			]
+		}
+	},
+
+	"default_interface": "eth0",
+	"default_gateway": "192.168.122.1"
+}

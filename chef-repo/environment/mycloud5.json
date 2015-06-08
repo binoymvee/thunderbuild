@@ -1,0 +1,173 @@
+{
+	"chef_type": "environment",
+	"default_attributes": 
+	{
+		
+	},
+
+	"name": "mycloud5",
+	"override_attributes": 
+	{
+		"openstack": 
+		{
+			"block-storage": 
+			{
+				"volume": 
+				{
+					"block_devices": "/dev/sdb1",
+					"driver": "cinder.volume.drivers.lvm.LVMISCSIDriver"
+				}
+			},
+
+			"compute": 
+			{
+				"network": 
+				{
+					"service_type": "neutron"
+				}
+			},
+
+			"network": 
+			{
+				"ml2": 
+				{
+					"tunnel_id_ranges": "1:1"
+				},
+
+				"dhcp": 
+				{
+					"upstream_dns_servers": 
+					[
+						"192.168.122.11",
+						"192.168.5.6"
+					]
+				},
+
+				"l3": 
+				{
+					"external_network_bridge_interface": "eth1"
+				},
+
+				"openvswitch": 
+				{
+					"tenant_network_type": "gre",
+					"enable_tunneling": "True",
+					"tunnel_type": "gre"
+				},
+
+				"metadata": 
+				{
+					"nova_metadata_ip": "controller"
+				}
+			},
+
+			"image": 
+			{
+				"api": 
+				{
+					"default_store": "file"
+				}
+			},
+
+			"secret": 
+			{
+				"service_passwords_data_bag": "service_passwords_5",
+				"secrets_data_bag": "secrets_5",
+				"user_passwords_data_bag": "user_passwords_5",
+				"db_passwords_data_bag": "db_passwords_5"
+			},
+
+			"mq": 
+			{
+				"service_type": "rabbitmq"
+			},
+
+			"dashboard": 
+			{
+				"server_hostname": "nil"
+			},
+
+			"object-storage": 
+			{
+				"git_builder_ip": "controller",
+				"network": 
+				{
+					"proxy-cidr": "192.168.122.11",
+					"object-cidr": "192.168.122.11"
+				}
+			},
+
+			"endpoints": 
+			{
+				"db": 
+				{
+					"host": "loadbalancer"
+				},
+
+				"host": "controller",
+				"mq": 
+				{
+					"host": "controller"
+				}
+			},
+
+			"identity": 
+			{
+				"admin_tenant_name": "root_tenant",
+				"admin_user": "admin_user",
+				"admin_email": "geo1@poornam.com"
+			}
+		},
+
+		"thunder": 
+		{
+			"chef_server_ip": "192.168.122.101",
+			"ip": "172.17.4.65",
+			"private_netlist": 
+			{
+				"1": 
+				{
+					"ip_cidr": "192.168.0.0/24"
+				},
+
+				"2": 
+				{
+					"ip_cidr": "192.168.13.0/24"
+				}
+			},
+
+			"pkg_download_url": "http://172.17.4.65:8000/download",
+			"local_repo_ip": "172.17.4.65",
+			"controller_ip": "192.168.122.190",
+			"floatingip_list": 
+			{
+				"1": 
+				{
+					"ip_range_to": "192.168.123.13",
+					"ip_cidr": "192.168.123.0/24",
+					"ip_range_from": "192.168.123.11"
+				},
+
+				"2": 
+				{
+					"ip_range_to": "192.168.124.66",
+					"ip_cidr": "192.168.124.0/24",
+					"ip_range_from": "192.168.124.44"
+				}
+			}
+		},
+
+		"mysql": 
+		{
+			"server_root_password": "root"
+		}
+	},
+
+	"cookbook_versions": 
+	{
+		
+	},
+
+	"json_class": "Chef::Environment",
+	"description": "mycloud5"
+}

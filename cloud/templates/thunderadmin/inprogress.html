@@ -1,0 +1,29 @@
+{% extends "thunderadmin/base.html" %}
+{% block title %}Final Installation Progress{% endblock %} 
+{% block head %}Final Installation Progress{% endblock %}
+{% block content %}
+<script>
+$(document).ready(function() {  
+    
+    // Triggers the installation request
+    $.ajax({
+        type: 'GET',
+        url: "/admin/completeInstallation",
+        success: function (xhr, ajaxOptions, thrownError) {
+            status = xhr.status;
+            
+            // Executes if response is success
+            if (status == 'true') {
+                alert(xhr.url);
+                timeout = setTimeout(function() {
+                    $(location).attr('href', xhr.url);
+                }, 10000);
+            }
+        }
+    });
+});
+</script>
+    <div id="final_progress_status">
+        Please wait while the installation is in progress. You will be shortly redirected to the thunder portal.
+    </div>
+{% endblock %}
